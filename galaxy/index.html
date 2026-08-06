@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy — build your business</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand" id="brandLogo"><div class="mark">G</div>Galaxy <span class="dim">/ business workspace</span></div>
+  <div class="topbar-spacer"></div>
+  <div class="search-box">
+    <span>⌕</span>
+    <input id="searchInput" placeholder="Search files across projects…">
+  </div>
+  <button class="topbar-btn" id="exportAllBtn">Export all</button>
+  <button class="topbar-btn primary" id="newRepoTopBtn">+ New project</button>
+  <div class="avatar-btn" id="avatarBtn" title="Account & settings">Y</div>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main" id="main"></div>
+</div>
+
+<!-- New Repo Modal -->
+<div class="overlay" id="repoModal">
+  <div class="modal">
+    <h3>Create a new project</h3>
+    <p class="sub">A project holds all the files for one part of your business.</p>
+    <div class="field">
+      <label>Project name</label>
+      <input id="repoNameInput" placeholder="e.g. Client Contracts">
+    </div>
+    <div class="field">
+      <label>What's it for? (optional)</label>
+      <input id="repoDescInput" placeholder="e.g. Signed agreements and proposals">
+    </div>
+    <div class="field">
+      <label>Color tag</label>
+      <div class="swatches" id="swatchRow"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="repoCancelBtn">Cancel</button>
+      <button class="btn-solid" id="repoCreateBtn">Create project</button>
+    </div>
+  </div>
+</div>
+
+<!-- New File Modal: type picker -->
+<div class="overlay" id="newFileModal">
+  <div class="modal">
+    <h3>Create a new file</h3>
+    <p class="sub">Pick a file type — each has its own editor.</p>
+    <div class="type-grid" id="typeGrid"></div>
+    <div class="field">
+      <label>File name</label>
+      <input id="newFileNameInput" placeholder="filename">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="newFileCancelBtn">Cancel</button>
+      <button class="btn-solid" id="newFileCreateBtn">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- File Editor Modal (routes to correct editor) -->
+<div class="overlay" id="fileEditorModal">
+  <div class="modal" style="width:900px; max-width:96vw;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
+      <div>
+        <h3 id="viewFileName" style="font-family:var(--mono);">file</h3>
+        <p class="sub" id="viewFileMeta" style="margin-bottom:0;">—</p>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-ghost" id="viewDownloadBtn">Download</button>
+        <button class="btn-solid" id="viewCloseBtn">Done</button>
+      </div>
+    </div>
+    <div id="editorBody"></div>
+  </div>
+</div>
+
+<!-- Deploy Modal -->
+<div class="overlay" id="deployModal">
+  <div class="modal">
+    <h3>🚀 Deploy project</h3>
+    <p class="sub" style="margin-bottom:4px;">Preview URL (simulated):</p>
+    <div style="font-family:var(--mono); font-size:15px; color:var(--accent); margin-bottom:14px;" id="deployUrl">yourproject.galaxy.app</div>
+    <div id="deployBody"></div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="deployCloseBtn">Close</button>
+      <button class="btn-ghost" id="deployPreviewBtn">Open live preview</button>
+      <button class="btn-solid" id="deployDownloadBtn">Download HTML</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="uploadInput" class="hidden-input" multiple>
+
+<div class="toast" id="toast">Saved</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
